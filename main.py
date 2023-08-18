@@ -66,30 +66,30 @@ if __name__ == "__main__":
     productdescription = inputobj.get_description()
     # print(productdescription)
     
-    # productspecifications = productobj.get_specifications(productskeywords,productname,productdescription)
-    # print(productspecifications)
+    productspecifications = productobj.get_specifications(productskeywords,productname,productdescription)
+    print(productspecifications)
     
-    filteredkeywords = inputobj.get_filter_keywords()
+    # filteredkeywords = inputobj.get_filter_keywords()
     
-    filteredproductspecification = productobj.get_filtered_specifications(filteredkeywords,productname,productdescription)
-    print(filteredproductspecification)
+    # filteredproductspecification = productobj.get_filtered_specifications(filteredkeywords,productname,productdescription)
+    # print(filteredproductspecification)
     
     
     # parse the output to dictionary format
-    # cleaned_response = productspecifications.strip().replace('\"', '').replace('    ','').split('\n')
-    # specs_dict = {}
+    cleaned_response = productspecifications.strip().replace('\"', '').replace('    ','').split('\n')
+    specs_dict = {}
     
-    # for line in cleaned_response:
-    #     parts = line.split(': ')
-    #     if len(parts) == 2:
-    #         specs_dict[parts[0]] = parts[1]
+    for line in cleaned_response:
+        parts = line.split(': ')
+        if len(parts) == 2:
+            specs_dict[parts[0]] = parts[1]
             
-    # # exporting data to json file
-    # output_filename = f"{productname}_specifications.json"
-    # with open(output_filename, 'w') as json_file:
-    #     json.dump(specs_dict, json_file, indent=4)
+    # exporting data to json file
+    output_filename = f"{productname}_specifications.json"
+    with open(output_filename, 'w') as json_file:
+        json.dump(specs_dict, json_file, indent=4)
 
-    # print(f"Specifications saved to {output_filename}")
+    print(f"Specifications saved to {output_filename}")
     
     
     
